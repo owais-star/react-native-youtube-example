@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -8,21 +8,21 @@ import {
   Pressable,
 } from 'react-native';
 import WebView from 'react-native-webview';
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 function Demo(props) {
-  const {navigation, route} = props;
-  const {videoId} = route.params;
+  const { navigation, route } = props;
+  const { videoId } = route.params;
   return (
     <Pressable
-      style={{flex: 1}}
+      style={{ flex: 1 }}
       onPress={() => {
         // handle or ignore
       }}
       onLongPress={() => {
         // handle or ignore
       }}>
-      <View pointerEvents="none" style={{flex: 1}}>
+      <View pointerEvents="none" style={{ flex: 1 }}>
         <WebView
           javaScriptEnabled={true}
           scrollEnabled={false}
@@ -31,7 +31,7 @@ function Demo(props) {
           source={{
             uri: `https://www.youtube.com/embed/${videoId}?&autoplay=1&mute=1&showinfo=0&controls=1&fullscreen=1`,
           }}
-          style={{flex: 1}}
+          style={{ flex: 1 }}
         />
       </View>
     </Pressable>

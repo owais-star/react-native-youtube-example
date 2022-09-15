@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import {StyleSheet} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 function Videos(props) {
-  const {videoData} = props;
+  const { videoData } = props;
   const playVideo = videoId => {
     console.log(videoId);
     // props.navigation.navigate('Player', {videoId});
-    props.navigation.navigate('Demo', {videoId});
+    props.navigation.navigate('Player', { videoId });
   };
   return (
     <>
