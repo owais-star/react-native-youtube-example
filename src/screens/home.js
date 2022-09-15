@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
-import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
-import {StyleSheet} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Videos from '../components/videos';
+import Orientation from 'react-native-orientation-locker';
 
 function Home(props) {
-  const {navigation} = props;
+  const { navigation } = props;
+  useEffect(() => {
+    // Orientation.lockToPortrait();
+  }, []);
+
   const videos = [
     {
       thumbnail: 'https://img.youtube.com/vi/L6AYquaHvWk/0.jpg',
@@ -26,7 +31,7 @@ function Home(props) {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Videos videoData={videos} navigation={navigation}/>
+        <Videos videoData={videos} navigation={navigation} />
         {/* <TouchableOpacity style={styles.videoBox}>
           <Image
             source={{

@@ -5,8 +5,19 @@ import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 
-public class MainActivity extends ReactActivity {
+// Add this import for orientation lock
+import android.content.Intent;
+import android.content.res.Configuration;
 
+public class MainActivity extends ReactActivity {
+  @Override
+     public void onConfigurationChanged(Configuration newConfig) {
+         super.onConfigurationChanged(newConfig);
+         Intent intent = new Intent("onConfigurationChanged");
+         intent.putExtra("newConfig", newConfig);
+         this.sendBroadcast(intent);
+     }
+     
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(null);
