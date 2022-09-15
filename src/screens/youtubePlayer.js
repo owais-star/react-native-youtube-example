@@ -11,6 +11,7 @@ import {
   Pressable,
 } from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
+import Orientation from 'react-native-orientation-locker';
 import Videos from '../components//videos';
 
 
@@ -38,6 +39,7 @@ export default function Player(props) {
 
   useEffect(() => {
     // console.log('videoId', videoId);
+    // Orientation.lockToPortrait();
     setPlaying(true);
     navigation.addListener('focus', () => {
       setPlaying(true);
@@ -50,10 +52,15 @@ export default function Player(props) {
       Alert.alert('video has finished playing!');
     }
   }, []);
-  const handleFullScreen = useCallback(state => {
+  const handleFullScreen = useCallback(isFullScreen => {
     // setPlaying(false);
     // Alert.alert('video has finished playing!');
-    console.log('state', state);
+    if (isFullScreen) {
+      Orientation.lockToLandscape()
+    } else {
+      Orientation.lockToPortrait()
+    }
+    console.log('state', isFullScreen);
   }, []);
 
   const togglePlaying = useCallback(() => {
@@ -91,7 +98,7 @@ export default function Player(props) {
         </Pressable>
         {/* <Button title={playing ? 'pause' : 'play'} onPress={togglePlaying} /> */}
       </View>
-      <ScrollView style={{ flex: 1, paddingVertical: 40 }}>
+      <ScrollView style={{ flex: 1, paddingVertical: 10, paddingTop: 10 }}>
         <View >
           <Videos videoData={videos} navigation={navigation} />
           {/* <TouchableOpacity style={styles.videoBox}>
@@ -115,6 +122,7 @@ const styles = StyleSheet.create({
     // display: 'flex',
     // alignItems: 'center',
     // justifyContent: 'center',
+    backgroundColor: '#000',
   },
   container1: {
     flex: 1,

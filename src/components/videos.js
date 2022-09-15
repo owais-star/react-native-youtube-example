@@ -11,8 +11,9 @@ function Videos(props) {
   };
   return (
     <>
-      {videoData.map(video => (
+      {videoData.map((video, index) => (
         <TouchableOpacity
+          key={index}
           onPress={() => playVideo(video.videoId)}
           style={styles.videoBox}>
           <Image

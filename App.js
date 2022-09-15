@@ -1,7 +1,8 @@
-import React from 'react';
-import {StyleSheet} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React, { useEffect } from 'react';
+import { StyleSheet } from 'react-native';
+import Orientation from 'react-native-orientation-locker';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import youtubePlayer from './src/screens/youtubePlayer';
 import Home from './src/screens/home';
 import Demo from './src/screens/demo';
@@ -9,6 +10,11 @@ import Demo from './src/screens/demo';
 const Stack = createNativeStackNavigator();
 
 function App() {
+
+  useEffect(() => {
+    Orientation.lockToPortrait();
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -16,12 +22,12 @@ function App() {
         <Stack.Screen
           name="Player"
           component={youtubePlayer}
-          // options={{headerShown: false}}
+        // options={{headerShown: false}}
         />
         <Stack.Screen
           name="Demo"
           component={Demo}
-          // options={{headerShown: false}}
+        // options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
